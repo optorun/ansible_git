@@ -5,7 +5,7 @@ argument_specs:
     short_description: Clone and update Git repositories on managed hosts
     description:
       - Install git package (Debian and RHEL-based systems). To skip, `--skip-tags preflightchecks`
-      - Clone git repositories from specified url and optional parameters (revision, refspec) on a local path (defaults to `$HOME/$repoName`)
+      - Clone git repositories from specified url and optional parameters (revision, refspec) on a local path (defaults to `$HOME/<git_repo_url_last_part>`)
       - If local clone exists, it will be updated to specified (optional) parameters
       - Variable `ansible_git_repositories_filter` can be used to filter repositories to process
 
@@ -38,7 +38,7 @@ argument_specs:
             description: Full path to clone the repository to
             type: str
             required: false
-            default: /home/$user
+            default: "$HOME/<repoUrl_last_part>"
 
       ansible_git_repositories:
         description: |
@@ -68,7 +68,7 @@ argument_specs:
             description: Full path to clone the repository to
             type: str
             required: false
-            default: /home/$user
+            default: "$HOME/<repoUrl_last_part>"
 
       ansible_git_repositories_filter:
         description: Filter to git repositories to process. Supports regex
