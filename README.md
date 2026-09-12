@@ -19,7 +19,7 @@ Clone and update Git repositories on managed hosts
 
 Install git package (Debian and RHEL-based systems). To skip, `--skip-tags preflightchecks`
 
-Clone git repositories from specified url and optional parameters (revision, refspec) on a local path (defaults to `$HOME/$repoName`)
+Clone git repositories from specified url and optional parameters (revision, refspec) on a local path (defaults to `$HOME/<git_repo_url_last_part>`)
 
 If local clone exists, it will be updated to specified (optional) parameters
 
@@ -38,7 +38,8 @@ Variable `ansible_git_repositories_filter` can be used to filter repositories to
 | repoUrl | Git repository URL | str | yes |  |
 | repoRevision | Git repository revision; could be a branch, tag or commit | str | no | main |
 | repoRefspec | Git repository custom refspec (https://git-scm.com/book/en/v2/Git-Internals-The-Refspec) | str | no | None |
-| repoDestPath | Full path to clone the repository to | str | no | /home/$user |
+| repoIsBare | Whether to clone the repository as bare | bool | no | False |
+| repoDestPath | Full path to clone the repository to | str | no | $HOME/<repoUrl_last_part> |
 
 #### Options for main > ansible_git_repositories
 
@@ -47,7 +48,8 @@ Variable `ansible_git_repositories_filter` can be used to filter repositories to
 | repoUrl | Git repository URL | str | yes |  |
 | repoRevision | Git repository revision; could be a branch, tag or commit | str | no | main |
 | repoRefspec | Git repository custom refspec (https://git-scm.com/book/en/v2/Git-Internals-The-Refspec) | str | no | None |
-| repoDestPath | Full path to clone the repository to | str | no | /home/$user |
+| repoIsBare | Whether to clone the repository as bare | bool | no | False |
+| repoDestPath | Full path to clone the repository to | str | no | $HOME/<repoUrl_last_part> |
 
 
 

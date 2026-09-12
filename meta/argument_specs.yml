@@ -34,6 +34,11 @@ argument_specs:
             type: str
             required: false
             default: null
+          repoIsBare:
+            description: Whether to clone the repository as bare
+            type: bool
+            required: false
+            default: false
           repoDestPath:
             description: Full path to clone the repository to
             type: str
@@ -64,6 +69,11 @@ argument_specs:
             type: str
             required: false
             default: null
+          repoIsBare:
+            description: Whether to clone the repository as bare
+            type: bool
+            required: false
+            default: false
           repoDestPath:
             description: Full path to clone the repository to
             type: str

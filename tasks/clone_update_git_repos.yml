@@ -16,6 +16,7 @@
     version: "{{ item.repoRevision | d('main') }}"
     dest: "{{ (item.repoDestPath | d(ansible_env.HOME ~ '/' ~ (item.repoUrl | basename | regex_replace('\\.git$', '')))) | expanduser }}"
     refspec: "{{ item.repoRefspec | d(omit) }}"
+    bare: "{{ item.repoIsBare | d(false) }}"
     accept_hostkey: true
   loop: >-
     {{
