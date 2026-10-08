@@ -18,6 +18,12 @@
     refspec: "{{ item.repoRefspec | d(omit) }}"
     bare: "{{ item.repoIsBare | d(false) }}"
     accept_hostkey: true
+  environment:
+    GIT_CONFIG_COUNT: "2"
+    GIT_CONFIG_KEY_0: diff.context
+    GIT_CONFIG_VALUE_0: "0"
+    GIT_CONFIG_KEY_1: color.diff
+    GIT_CONFIG_VALUE_1: always
   loop: >-
     {{
       (ansible_git_repositories_common|d([]) + ansible_git_repositories|d([])) | selectattr('repoUrl', 'search', ansible_git_repositories_filter) if ansible_git_repositories_filter|d(null)
